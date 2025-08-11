@@ -1,0 +1,203 @@
+/* Out of Context Theme - Matching Book Cover */
+:root {
+    --bg-color: #1e2b4a;  /* Deep blue from cover */
+    --fg-color: #e8e6e1;  /* Cream text */
+    --sidebar-bg: #162137;
+    --sidebar-fg: #c9c7c1;
+    --accent: #ff6b9d;    /* Pink accent from cover */
+    --quote-bg: #253354;
+    --link-color: #66d9ef;
+    font-family: 'Source Serif', serif;
+    font-weight: 200;
+}
+
+/* Typography matching book */
+.content h1 {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 200;
+    color: var(--accent);
+    margin-top: 2.5rem;
+}
+
+.content h2 {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 200;
+    color: var(--fg-color);
+    margin-top: 2rem;
+}
+
+
+/* Klaus quotes special styling */
+blockquote {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+}
+
+/* Navigation improvements */
+.chapter li.active > a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Part headers in sidebar */
+.chapter li.part-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+/* Hide the Navigation Links page from the sidebar */
+.sidebar-iframe-inner a[href$="resources/nav-links.html"],
+mdbook-sidebar a[href$="resources/nav-links.html"] {
+  display: none !important;
+}
+
+/* Topbar custom links styling */
+.menu-bar .custom-nav-links {
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-right: 0.6rem;
+}
+.menu-bar .custom-nav-links a {
+  font-size: 0.95em;
+  text-decoration: none;
+}
+.menu-bar .custom-nav-links a:hover {
+  text-decoration: underline;
+}
+/* Brand fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&display=swap');
+
+/* Brand palette mapped to manuscript */
+:root,
+.light,
+.navy,
+.rust,
+.coal,
+.ayu {
+  /* Navy scale */
+  --navy-900: #0a1628;
+  --navy-800: #142238;
+  --navy-700: #1e2f48;
+  --navy-600: #283c58;
+  --navy-500: #324968; /* primary navy */
+  --navy-400: #4d6078;
+  --navy-300: #687788;
+  --navy-200: #9fa8b4;
+  --navy-100: #d7dce2;
+  --navy-50:  #ebeff3;
+
+  /* Klaus blues (optional accents) */
+  --klaus-900: #0f2340;
+  --klaus-800: #1a3150;
+  --klaus-700: #254060;
+  --klaus-600: #304f70;
+  --klaus-500: #3b5e80; /* primary klaus */
+
+  /* Accent sets */
+  --pink-500:   #cc0066; /* primary pink */
+  --purple-500: #6600cc; /* primary purple */
+  --teal-500:   #00cccc; /* primary teal */
+
+  /* Base tokens */
+  --brand-bg: var(--navy-900);
+  --brand-bg-strong: var(--navy-900);
+  --brand-bg-soft: var(--navy-600);
+  --brand-fg: #ffffff;
+  --brand-muted: var(--navy-200);
+  --accent-pink: var(--pink-500);
+  --accent-purple: var(--purple-500);
+  --accent-teal: var(--teal-500);
+  --link: var(--accent-teal);
+  --link-hover: var(--accent-pink);
+}
+
+/* Global base */
+html, body {
+  background: var(--brand-bg);
+  color: var(--brand-fg);
+  font-family: 'Source Serif 4', ui-serif, Georgia, serif;
+}
+
+/* Typography */
+h1, h2, h3, .menu-title {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 300;
+}
+h1 { letter-spacing: -0.01em; }
+h2, h3 { letter-spacing: -0.005em; }
+
+/* Links */
+a { color: var(--link); }
+a:hover { color: var(--link-hover); }
+
+/* Hide theme switcher and lock appearance */
+#theme-toggle, #theme-list { display: none !important; }
+
+/* Top navigation bar: more vertical presence */
+.menu-bar {
+  --topbar-height: 68px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  min-height: var(--topbar-height);
+  background: linear-gradient(180deg, rgba(17,26,51,0.85), rgba(11,16,32,0.95));
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  z-index: 1000;
+}
+.menu-title { font-size: 1.25rem; }
+.menu-bar .custom-nav-links a { color: var(--brand-fg); opacity: 0.9; }
+.menu-bar .custom-nav-links a:hover { opacity: 1; color: var(--accent-pink); }
+
+/* Main content area: subtle diagonal gradient (lighter top-right) */
+#content {
+  background: linear-gradient(to bottom left,
+    var(--brand-bg-soft) 0%,
+    var(--brand-bg) 40%,
+    var(--brand-bg-strong) 100%
+  );
+}
+#page-wrapper { padding-top: var(--topbar-height); }
+
+/* Nav search in top bar */
+.menu-bar .nav-search {
+  min-width: 220px;
+  max-width: 320px;
+  margin-right: 0.75rem;
+}
+.menu-bar .nav-search input[type="search"],
+.menu-bar .nav-search input[type="text"],
+.menu-bar .nav-search .pagefind-ui__form {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--brand-fg);
+}
+.menu-bar .nav-search .pagefind-ui__drawer {
+  background: var(--brand-bg);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.content main {
+  background: transparent;
+}
+
+/* Improve readability */
+.content p { line-height: 1.7; color: var(--brand-fg); }
+.content li { line-height: 1.6; }
+.content blockquote { color: var(--brand-muted); border-left-color: var(--accent-purple); }
+.content hr { border-color: rgba(255,255,255,0.12); }
+
+/* Code blocks readability on dark background */
+pre, code { background: rgba(255,255,255,0.06); color: #f7fafc; }
+pre { border: 1px solid rgba(255,255,255,0.08); }
+code { padding: 0.1em 0.25em; border-radius: 4px; }
