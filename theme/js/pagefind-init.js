@@ -62,10 +62,9 @@ function injectNavSearch() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Always try to inject a nav search box
-  injectNavSearch();
   ensurePagefindAssets().then(() => {
-    initSearchAt('#nav-search', { showSubResults: false, autofocus: false, translations: { placeholder: 'Search' } });
+    // Initialize search in the navbar div we added in the template
+    initSearchAt('#nav-pagefind', { showSubResults: false, autofocus: false, translations: { placeholder: 'Search' } });
     // Initialize page-level search if present
     initSearchAt('#search', { autofocus: true, translations: { placeholder: 'Search' } });
   });

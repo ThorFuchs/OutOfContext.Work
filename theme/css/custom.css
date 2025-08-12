@@ -140,35 +140,16 @@ a:hover { color: var(--link-hover); }
 /* Hide theme switcher and lock appearance */
 #theme-toggle, #theme-list { display: none !important; }
 
-/* Top navigation bar: more vertical presence */
-.menu-bar {
-  --topbar-height: 68px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  min-height: var(--topbar-height);
-  background: linear-gradient(180deg, rgba(17,26,51,0.85), rgba(11,16,32,0.95));
-  backdrop-filter: blur(4px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  z-index: 1000;
-}
-.menu-title { font-size: 1.25rem; }
+/* Top navigation bar: defined in glassmorphism.css */
+/* Menu title hidden in glassmorphism design */
 .menu-bar .custom-nav-links a { color: var(--brand-fg); opacity: 0.9; }
 .menu-bar .custom-nav-links a:hover { opacity: 1; color: var(--accent-pink); }
 
-/* Main content area: subtle diagonal gradient (lighter top-right) */
+/* Main content area styling */
 #content {
-  background: linear-gradient(to bottom left,
-    var(--brand-bg-soft) 0%,
-    var(--brand-bg) 40%,
-    var(--brand-bg-strong) 100%
-  );
+  /* Background handled by glassmorphism.css */
 }
-#page-wrapper { padding-top: var(--topbar-height); }
+#page-wrapper { padding-top: 0; }
 
 /* Nav search in top bar */
 .menu-bar .nav-search {
@@ -201,3 +182,168 @@ a:hover { color: var(--link-hover); }
 pre, code { background: rgba(255,255,255,0.06); color: #f7fafc; }
 pre { border: 1px solid rgba(255,255,255,0.08); }
 code { padding: 0.1em 0.25em; border-radius: 4px; }
+
+/* New vertical stack layout */
+#app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Fixed top navigation bar */
+#app-wrapper > .menu-bar {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1000;
+}
+
+/* Main content wrapper with two columns */
+#content-wrapper {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Override default sidebar positioning */
+#sidebar {
+  position: relative;
+  width: var(--sidebar-width, 300px);
+  min-width: 200px;
+  max-width: 500px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--sidebar-bg);
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+/* Prevent horizontal scrolling in sidebar */
+#sidebar .sidebar-scrollbox {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#sidebar .chapter {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+#sidebar .chapter li {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sidebar resize handle */
+#sidebar-resize-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: col-resize;
+  background: transparent;
+  transition: background 0.2s;
+  z-index: 100;
+}
+
+#sidebar-resize-handle:hover,
+#sidebar-resize-handle:active {
+  background: rgba(255,255,255,0.15);
+}
+
+.sidebar-resize-indicator {
+  display: none;
+}
+
+/* Page wrapper takes remaining space */
+#page-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: 0;
+}
+
+/* Page content area */
+.page {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Bottom bar - styling in glassmorphism.css */
+
+#bottom-bar .nav-wide-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  gap: 1rem;
+}
+
+#bottom-bar .nav-chapters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-fg);
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+#bottom-bar .nav-chapters:hover {
+  color: var(--accent-pink);
+  transform: scale(1.05);
+}
+
+#bottom-bar .nav-chapters span {
+  display: none;
+}
+
+#bottom-bar .nav-spacer {
+  display: none;
+}
+
+/* Hide mobile nav buttons in content area */
+.nav-wrapper {
+  display: none;
+}
+
+/* Adjust sidebar toggle behavior */
+.sidebar-visible #sidebar {
+  transform: translateX(0);
+}
+
+#sidebar.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+/* Remove old positioning styles */
+.page-wrapper {
+  left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1080px) {
+  #sidebar {
+    position: absolute;
+    z-index: 100;
+    transition: transform 0.3s;
+  }
+  
+  .sidebar-hidden #sidebar {
+    transform: translateX(-100%);
+  }
+  
+  #bottom-bar {
+    padding: 0 1rem;
+  }
+}
