@@ -1,0 +1,210 @@
+/* Override mdBook theme backgrounds for all themes */
+
+/* Light theme overrides */
+.light #content,
+.light .content,
+.light #bottom-bar,
+.light .page,
+.light #page-wrapper,
+.light #content-wrapper,
+.light #app-wrapper,
+.light #body-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Rust theme overrides */
+.rust #content,
+.rust .content,
+.rust #bottom-bar,
+.rust .page,
+.rust #page-wrapper,
+.rust #content-wrapper,
+.rust #app-wrapper,
+.rust #body-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Coal theme overrides */
+.coal #content,
+.coal .content,
+.coal #bottom-bar,
+.coal .page,
+.coal #page-wrapper,
+.coal #content-wrapper,
+.coal #app-wrapper,
+.coal #body-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Navy theme overrides */
+.navy #content,
+.navy .content,
+.navy #bottom-bar,
+.navy .page,
+.navy #page-wrapper,
+.navy #content-wrapper,
+.navy #app-wrapper,
+.navy #body-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Ayu theme overrides */
+.ayu #content,
+.ayu .content,
+.ayu #bottom-bar,
+.ayu .page,
+.ayu #page-wrapper,
+.ayu #content-wrapper,
+.ayu #app-wrapper,
+.ayu #body-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Override theme-specific content backgrounds */
+.light .content,
+.rust .content,
+.coal .content,
+.navy .content,
+.ayu .content {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Force transparent on the main element too */
+.light main,
+.rust main,
+.coal main,
+.navy main,
+.ayu main {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Global variable overrides for all themes */
+:root {
+  --bg: transparent !important;
+  --content-bg: transparent !important;
+  --bg-color: transparent !important;
+  --sidebar-bg: transparent !important;
+}
+
+/* Override any theme variables that might be setting backgrounds */
+.light {
+  --bg: transparent !important;
+  --content-bg: transparent !important;
+  --bg-color: transparent !important;
+  --sidebar-bg: transparent !important;
+}
+
+.rust {
+  --bg: transparent !important;
+  --content-bg: transparent !important;
+  --bg-color: transparent !important;
+  --sidebar-bg: transparent !important;
+}
+
+.coal {
+  --bg: transparent !important;
+  --content-bg: transparent !important;
+  --bg-color: transparent !important;
+  --sidebar-bg: transparent !important;
+}
+
+.navy {
+  --bg: transparent !important;
+  --content-bg: transparent !important;
+  --bg-color: transparent !important;
+  --sidebar-bg: transparent !important;
+}
+
+.ayu {
+  --bg: transparent !important;
+  --content-bg: transparent !important;
+  --bg-color: transparent !important;
+  --sidebar-bg: transparent !important;
+}
+
+/* Specific overrides for content and bottom bar with higher specificity */
+body #content,
+body .content,
+body #content main,
+body #content .content,
+body #bottom-bar,
+body #bottom-bar .nav-wrapper,
+body #page-wrapper,
+body .page {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Fix overflow clipping issues that crop borders */
+#body-container {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
+html {
+  overflow-x: visible !important;
+}
+
+.content {
+  overflow-y: auto !important;
+  overflow-x: visible !important;
+}
+
+/* Override mdBook's sticky positioning that interferes with our layout */
+#menu-bar,
+#menu-bar.sticky,
+#menu-bar-hover-placeholder:hover + #menu-bar,
+#menu-bar:hover,
+html.sidebar-visible #menu-bar {
+  position: relative !important;
+  top: unset !important;
+}
+
+/* Ensure proper z-index stacking */
+#menu-bar {
+  z-index: 10 !important;
+}
+
+#content-wrapper {
+  z-index: 1 !important;
+  position: relative !important;
+}
+
+#page-wrapper {
+  z-index: 1 !important;
+  position: relative !important;
+}
+
+#content {
+  z-index: 1 !important;
+  position: relative !important;
+}
+
+/* Removed pseudo-element border fix - no longer needed since we moved glassmorphism to .page */
+
+
+/* Clean scroll behavior */
+#content {
+  overflow-y: auto !important;
+  overflow-x: visible !important;
+  overscroll-behavior: contain !important;
+}
+
+/* Override mdBook's negative margin that pulls content up */
+.content {
+  margin-block-start: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Negative margin to pull content up - compensating for hidden spacing */
+.page {
+  margin-top: -12px !important;
+}

@@ -29,7 +29,9 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../theme/css/custom.css">
-        <link rel="stylesheet" href="../theme/css/glassmorphism.css">
+        <link rel="stylesheet" href="../theme/css/glassmorphism-clean.css">
+        <link rel="stylesheet" href="../theme/css/layout-system.css">
+        <link rel="stylesheet" href="../theme/css/theme-override.css">
 
 
         <!-- Provide site root and default themes to javascript -->
@@ -103,37 +105,50 @@
 
         <!-- New vertical stack layout -->
         <div id="app-wrapper" class="app-wrapper">
-            <!-- Top navigation bar -->
+            <!-- Top navigation bar with three-column layout -->
             <div id="menu-bar" class="menu-bar">
-                <div class="left-buttons">
+                <!-- Leading slot: Hamburger + Logo -->
+                <div class="navbar-leading">
                     <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                         <i class="fa fa-bars"></i>
                     </label>
-                    <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                        <i class="fa fa-paint-brush"></i>
-                    </button>
-                    <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                        <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                        <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                        <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                        <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                        <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                        <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                    </ul>
+                    <div class="navbar-logo">OUT OF CONTEXT</div>
                 </div>
 
-                <h1 class="menu-title">Out of Context</h1>
-
-                <!-- Search box in navbar -->
-                <div class="nav-search">
-                    <div id="nav-pagefind"></div>
+                <!-- Center slot: Navigation Links -->
+                <div class="navbar-center">
+                    <div class="navbar-links">
+                        <!-- Navigation links will be populated by nav-links.js -->
+                    </div>
                 </div>
 
-                <div class="right-buttons">
-                    <a href="https://github.com/outofcontext/book" title="Git repository" aria-label="Git repository">
-                        <i id="git-repository-button" class="fa fa-github"></i>
-                    </a>
+                <!-- Trailing slot: Search + Actions -->
+                <div class="navbar-trailing">
+                    <!-- Search box -->
+                    <div class="nav-search">
+                        <div id="nav-pagefind"></div>
+                    </div>
+                    
+                    <!-- Action buttons -->
+                    <div class="navbar-actions">
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
                 </div>
+
+                <!-- Hidden elements for compatibility -->
+                <h1 class="menu-title" style="display: none;">Out of Context</h1>
+                <div class="left-buttons" style="display: none;"></div>
+                <div class="right-buttons" style="display: none;"></div>
             </div>
 
             <!-- Main content area with two columns -->
@@ -166,9 +181,7 @@
 
                         <div id="content" class="content">
                             <main>
-                                <h1 id="navigation-links"><a class="header" href="#navigation-links">Navigation Links</a></h1>
-<p>Maintain custom navigation links by editing the list below. Use plain Markdown link syntax; one per line. External links are supported.</p>
-<ul>
+                                <ul>
 <li><a href="./get-the-book.html">Get the Book</a></li>
 <li><a href="./press-kit.html">Press Kit</a></li>
 <li><a href="./contact.html">Contact</a></li>

@@ -149,7 +149,7 @@ a:hover { color: var(--link-hover); }
 #content {
   /* Background handled by glassmorphism.css */
 }
-#page-wrapper { padding-top: 0; }
+/* Page wrapper padding handled by glassmorphism.css */
 
 /* Nav search in top bar */
 .menu-bar .nav-search {
@@ -277,25 +277,28 @@ code { padding: 0.1em 0.25em; border-radius: 4px; }
 
 /* Bottom bar - styling in glassmorphism.css */
 
+/* Override old bottom bar layout - use flexbox structure from glassmorphism.css */
 #bottom-bar .nav-wide-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin: 0;
-  gap: 1rem;
+  padding: 0;
 }
 
+/* Bottom bar navigation buttons with padding */
 #bottom-bar .nav-chapters {
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--brand-fg);
   text-decoration: none;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 6px;
   transition: all 0.2s;
+  margin: 4px;
 }
 
 #bottom-bar .nav-chapters:hover {

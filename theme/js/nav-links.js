@@ -1,29 +1,19 @@
 (function () {
   function injectLinks(links) {
-    const bar = document.querySelector('#menu-bar .right-buttons');
-    if (!bar || !links.length) return;
-
-    const container = document.createElement('span');
-    container.className = 'custom-nav-links';
+    const navLinksContainer = document.querySelector('.navbar-links');
+    if (!navLinksContainer || !links.length) return;
 
     links.forEach(({ text, href }) => {
       const a = document.createElement('a');
       a.textContent = text;
       a.href = href;
+      a.className = 'nav-link';
       if (/^https?:\/\//i.test(href)) {
         a.target = '_blank';
         a.rel = 'noopener';
       }
-      container.appendChild(a);
+      navLinksContainer.appendChild(a);
     });
-
-    // Insert before the repo icon if present, else append
-    const repo = bar.querySelector('#git-repository-button');
-    if (repo && repo.parentElement) {
-      bar.insertBefore(container, repo.parentElement);
-    } else {
-      bar.appendChild(container);
-    }
   }
 
   function parseMarkdownLinks(md) {

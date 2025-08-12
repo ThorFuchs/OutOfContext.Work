@@ -1,0 +1,325 @@
+/* Glassmorphism Design System - Clean version for new layout */
+
+/* Fixed gradient background */
+body {
+  background: linear-gradient(
+    135deg,
+    #0a1628 0%,
+    #1e2f48 25%,
+    #142238 50%,
+    #1a3150 75%,
+    #0f2340 100%
+  );
+  background-attachment: fixed;
+}
+
+/* Glassmorphism variables */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(12px);
+  --content-glass-bg: rgba(255, 255, 255, 0.02);
+  --content-glass-blur: blur(8px);
+}
+
+/* Ensure all text is light colored */
+* {
+  color: var(--brand-fg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--brand-fg) !important;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  color: var(--brand-fg) !important;
+}
+
+.content h1:first-child {
+  color: var(--accent-pink) !important;
+}
+
+.chapter li a {
+  color: var(--brand-fg);
+}
+
+/* Fix for any remaining black text */
+#content * {
+  color: inherit;
+}
+
+/* Navbar layout - only the flexbox structure */
+.navbar-leading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.navbar-logo {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-fg);
+  white-space: nowrap;
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Style navbar custom links */
+.navbar-links a.nav-link {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brand-fg);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a.nav-link:hover {
+  color: var(--accent-pink);
+  text-decoration: none;
+}
+
+.navbar-trailing {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  padding: 4px 12px 4px 4px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Hide GitHub icon */
+#git-repository-button {
+  display: none !important;
+}
+
+/* Pagefind search styling */
+.nav-search {
+  position: relative;
+}
+
+#nav-pagefind {
+  display: block;
+}
+
+.pagefind-ui {
+  display: flex;
+  align-items: center;
+}
+
+.pagefind-ui__form {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 200px;
+  transition: width 0.3s ease;
+  height: 36px;
+  max-height: 36px;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.pagefind-ui__form:focus-within {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.pagefind-ui__search-input {
+  color: var(--brand-fg) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0.25rem 0.5rem 0.25rem 1rem !important;
+  font-size: 14px !important;
+  flex: 1 !important;
+  outline: none !important;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.pagefind-ui__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.pagefind-ui__search-clear {
+  color: rgba(255, 255, 255, 0.6) !important;
+  padding: 0 0.5rem !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.pagefind-ui__search-clear:hover {
+  color: var(--accent-pink) !important;
+}
+
+/* Search button styling */
+.pagefind-ui button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  padding: 0.4rem !important;
+  margin-right: 0.5rem !important;
+  cursor: pointer !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  transition: all 0.2s ease !important;
+}
+
+.pagefind-ui button:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--accent-pink) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Search results dropdown */
+.pagefind-ui__drawer {
+  position: absolute !important;
+  top: calc(100% + 0.5rem) !important;
+  right: 12px !important;
+  left: auto !important;
+  width: 400px !important;
+  max-width: calc(100vw - 2rem) !important;
+  background: rgba(17, 26, 51, 0.95) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--glass-shadow) !important;
+  margin: 0 !important;
+  max-height: 60vh !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+}
+
+.pagefind-ui__results-area {
+  padding: 1rem !important;
+}
+
+.pagefind-ui__result {
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 1rem 0 !important;
+  margin: 0 !important;
+}
+
+.pagefind-ui__result:last-child {
+  border-bottom: none !important;
+}
+
+.pagefind-ui__result-link {
+  color: var(--brand-fg) !important;
+  text-decoration: none !important;
+}
+
+.pagefind-ui__result-link:hover {
+  color: var(--accent-pink) !important;
+}
+
+.pagefind-ui__result-title {
+  color: var(--brand-fg) !important;
+  font-weight: 600 !important;
+}
+
+.pagefind-ui__result-excerpt {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.pagefind-ui__result-excerpt mark {
+  background: var(--accent-purple) !important;
+  color: var(--brand-fg) !important;
+  padding: 0.1em 0.2em !important;
+  border-radius: 3px !important;
+}
+
+.pagefind-ui__message {
+  color: rgba(255, 255, 255, 0.6) !important;
+  padding: 1rem !important;
+}
+
+.pagefind-ui__search-wrapper {
+  position: relative !important;
+}
+
+/* Hide Navigation Links text */
+mdbook-toc-collapse > summary:first-child {
+  display: none;
+}
+
+/* Smooth transitions */
+.pagefind-ui__form,
+.pagefind-ui button {
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar styling to match glassmorphism */
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Responsive navbar - hide center slot on small screens */
+@media (max-width: 768px) {
+  .navbar-center {
+    display: none;
+  }
+  
+  /* Adjust search box width on mobile */
+  .pagefind-ui__form {
+    width: 150px;
+  }
+  
+  .pagefind-ui__form:focus-within {
+    width: 200px;
+  }
+}
