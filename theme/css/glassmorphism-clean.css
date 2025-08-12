@@ -1,6 +1,31 @@
-/* Glassmorphism Design System - Clean version for new layout */
+/* 
+ * ============================================================================
+ * GLASSMORPHISM DESIGN SYSTEM
+ * ============================================================================
+ * 
+ * Apple-inspired liquid glass effects with customizable parameters.
+ * This file contains all visual styling without layout logic.
+ * 
+ * KEY DESIGN ELEMENTS:
+ * - Gradient background with multiple color stops
+ * - Translucent glass effects with backdrop blur
+ * - Consistent border radius and shadows
+ * - Pink accent color for branding
+ * 
+ * ============================================================================
+ */
 
-/* Fixed gradient background */
+/* 
+ * GRADIENT BACKGROUND
+ * Multi-stop gradient creating depth and atmosphere
+ * 
+ * CONFIGURABLE COLOR STOPS:
+ * - 0%: #0a1628 (deep blue-black)
+ * - 25%: #1e2f48 (dark blue)
+ * - 50%: #142238 (midnight blue)
+ * - 75%: #1a3150 (ocean blue)
+ * - 100%: #0f2340 (dark navy)
+ */
 body {
   background: linear-gradient(
     135deg,
@@ -13,7 +38,11 @@ body {
   background-attachment: fixed;
 }
 
-/* Glassmorphism variables */
+/* 
+ * GLASSMORPHISM VARIABLES
+ * Central configuration for all glass effects
+ * Modify these to adjust the entire design system
+ */
 :root {
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
@@ -23,7 +52,10 @@ body {
   --content-glass-blur: blur(8px);
 }
 
-/* Ensure all text is light colored */
+/* 
+ * TEXT COLOR SYSTEM
+ * Ensures readable text on dark backgrounds
+ */
 * {
   color: var(--brand-fg);
 }
@@ -51,7 +83,10 @@ h1, h2, h3, h4, h5, h6 {
   color: inherit;
 }
 
-/* Navbar layout - only the flexbox structure */
+/* 
+ * NAVBAR COMPONENTS
+ * Three-column layout for navigation bar
+ */
 .navbar-leading {
   display: flex;
   align-items: center;
@@ -82,7 +117,10 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-/* Style navbar custom links */
+/* 
+ * NAVBAR LINK STYLING
+ * Custom navigation links (Get the Book, Press Kit, etc.)
+ */
 .navbar-links a.nav-link {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 14px;
@@ -111,12 +149,20 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.5rem;
 }
 
-/* Hide GitHub icon */
+/* GitHub icon - hidden for cleaner design */
 #git-repository-button {
   display: none !important;
 }
 
-/* Pagefind search styling */
+/* 
+ * PAGEFIND SEARCH INTEGRATION
+ * Custom styling for search functionality
+ * 
+ * CONFIGURABLE:
+ * - Search box width: 200px (default) → 280px (focused)
+ * - Background opacity: rgba(255, 255, 255, 0.08)
+ * - Border color: rgba(255, 255, 255, 0.12)
+ */
 .nav-search {
   position: relative;
 }
@@ -199,7 +245,15 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.05) !important;
 }
 
-/* Search results dropdown */
+/* 
+ * SEARCH RESULTS DROPDOWN
+ * Glassmorphic dropdown for search results
+ * 
+ * CONFIGURABLE:
+ * - Width: 400px
+ * - Background: rgba(17, 26, 51, 0.95)
+ * - Max height: 60vh
+ */
 .pagefind-ui__drawer {
   position: absolute !important;
   top: calc(100% + 0.5rem) !important;
@@ -270,18 +324,26 @@ h1, h2, h3, h4, h5, h6 {
   position: relative !important;
 }
 
-/* Hide Navigation Links text */
+/* Hide mdBook's default "Navigation Links" text */
 mdbook-toc-collapse > summary:first-child {
   display: none;
 }
 
-/* Smooth transitions */
+/* Smooth transitions for interactive elements */
 .pagefind-ui__form,
 .pagefind-ui button {
   transition: all 0.3s ease;
 }
 
-/* Scrollbar styling to match glassmorphism */
+/* 
+ * CUSTOM SCROLLBAR
+ * Styled to match glassmorphism aesthetic
+ * 
+ * CONFIGURABLE:
+ * - Width: 10px
+ * - Track: rgba(255, 255, 255, 0.05)
+ * - Thumb: rgba(255, 255, 255, 0.1)
+ */
 ::-webkit-scrollbar {
   width: 10px;
   background: transparent;
@@ -308,7 +370,12 @@ mdbook-toc-collapse > summary:first-child {
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-/* Responsive navbar - hide center slot on small screens */
+/* 
+ * RESPONSIVE DESIGN
+ * Mobile adjustments for screens < 768px
+ * - Hides center navigation links
+ * - Reduces search box width
+ */
 @media (max-width: 768px) {
   .navbar-center {
     display: none;

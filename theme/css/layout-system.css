@@ -1,23 +1,38 @@
 /* 
- * Comprehensive Viewport Layout System
- * Translating SwiftUI-style layout to CSS Flexbox
+ * ============================================================================
+ * COMPREHENSIVE VIEWPORT LAYOUT SYSTEM
+ * ============================================================================
  * 
- * Structure:
- * Page (100vh) {
- *   VStack {
- *     NavBar (44px height, full width)
- *     HStack (flex: 1) {
- *       Sidebar (200px width, resizable, full height)
- *       VStack (flex: 1) {
- *         MainContent (flex: 1, full width)
- *         BottomBar (44px height, full width)
- *       }
- *     }
- *   }
- * }
+ * A SwiftUI-inspired flexbox layout system for mdBook with glassmorphism design.
+ * This creates a modern, Apple-style interface with liquid glass effects.
+ * 
+ * KEY FEATURES:
+ * - Vertical stack layout (navbar → content → bottom bar)
+ * - Responsive sidebar with resize capability
+ * - Glassmorphic containers with backdrop blur
+ * - Pixel-perfect alignment across all elements
+ * 
+ * STRUCTURE:
+ * body-container (100vh)
+ * └── app-wrapper (VStack with 8px padding)
+ *     ├── menu-bar (56px height, glassmorphic navbar)
+ *     └── content-wrapper (HStack)
+ *         ├── sidebar (300px default, resizable, glassmorphic)
+ *         └── page-wrapper (VStack)
+ *             ├── page (glassmorphic container)
+ *             │   └── content (scrollable area)
+ *             └── bottom-bar (44px height, glassmorphic)
+ * 
+ * CONFIGURATION VARIABLES:
+ * --sidebar-width: 300px (adjustable via resize handle)
+ * 
+ * ============================================================================
  */
 
-/* Reset and base setup */
+/* 
+ * RESET AND BASE SETUP
+ * Ensures consistent viewport handling across browsers
+ */
 html, body {
   height: 100%;
   margin: 0;
@@ -25,7 +40,11 @@ html, body {
   overflow: visible;
 }
 
-/* Force all containers to be transparent */
+/* 
+ * TRANSPARENCY ENFORCEMENT
+ * Critical: Forces all containers to be transparent to allow
+ * the gradient background to show through
+ */
 #body-container,
 #app-wrapper,
 #content-wrapper,
@@ -35,7 +54,11 @@ html, body {
   background-color: transparent !important;
 }
 
-/* Main page container - 100% viewport */
+/* 
+ * MAIN PAGE CONTAINER
+ * Root container that fills the entire viewport
+ * Uses flexbox for vertical stacking of all elements
+ */
 #body-container {
   height: 100vh;
   width: 100vw;
@@ -44,7 +67,14 @@ html, body {
   overflow: visible;
 }
 
-/* App wrapper - main vertical stack */
+/* 
+ * APP WRAPPER - PRIMARY LAYOUT CONTAINER
+ * Creates the main vertical stack with consistent padding
+ * 
+ * CONFIGURABLE:
+ * - padding: 8px (outer spacing around all elements)
+ * - gap: 8px (spacing between navbar and content)
+ */
 #app-wrapper {
   height: 100%;
   width: 100%;
@@ -55,7 +85,17 @@ html, body {
   gap: 8px;
 }
 
-/* NavBar - Fixed height slot */
+/* 
+ * NAVBAR - TOP NAVIGATION BAR
+ * Fixed-height glassmorphic container for navigation
+ * 
+ * CONFIGURABLE:
+ * - height: 56px (navbar height)
+ * - padding: 0 2rem (horizontal padding)
+ * - background: rgba(255, 255, 255, 0.05) (glass opacity)
+ * - backdrop-filter: blur(12px) (blur intensity)
+ * - border-radius: 12px (corner roundness)
+ */
 #app-wrapper > .menu-bar {
   height: 56px;
   min-height: 56px;
@@ -78,7 +118,11 @@ html, body {
   padding: 0 3rem 0 2rem;
 }
 
-/* Content wrapper - Horizontal stack (sidebar + main content) */
+/* 
+ * CONTENT WRAPPER - HORIZONTAL LAYOUT
+ * Creates the two-column layout for sidebar and main content
+ * Uses flexbox for responsive behavior
+ */
 #content-wrapper {
   flex: 1;
   display: flex;
@@ -87,7 +131,16 @@ html, body {
   padding: 4px;
 }
 
-/* Sidebar - Resizable width, full height */
+/* 
+ * SIDEBAR - TABLE OF CONTENTS
+ * Resizable glassmorphic sidebar with scroll capability
+ * 
+ * CONFIGURABLE:
+ * - width: var(--sidebar-width, 300px) (default width)
+ * - min-width: 200px (minimum resize limit)
+ * - max-width: 500px (maximum resize limit)
+ * - background: rgba(255, 255, 255, 0.05) (glass opacity)
+ */
 #sidebar {
   width: var(--sidebar-width, 300px);
   min-width: 200px;
@@ -130,7 +183,11 @@ html, body {
   z-index: 1;
 }
 
-/* Page wrapper - Vertical stack (content + bottom bar) */
+/* 
+ * PAGE WRAPPER - CONTENT CONTAINER
+ * Vertical stack containing main content and bottom navigation
+ * IMPORTANT: padding-top: 12px ensures proper spacing after navbar
+ */
 #page-wrapper {
   flex: 1;
   display: flex;
@@ -141,7 +198,18 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Page content - Takes remaining space */
+/* 
+ * PAGE - GLASSMORPHIC CONTENT CONTAINER
+ * The main glassmorphic container that holds scrollable content
+ * 
+ * CONFIGURABLE:
+ * - padding: 1rem (inner content padding)
+ * - background: rgba(255, 255, 255, 0.02) (glass opacity)
+ * - backdrop-filter: blur(8px) (blur intensity)
+ * - border-radius: 12px (corner roundness)
+ * 
+ * NOTE: overflow: hidden is critical for border-radius clipping
+ */
 .page {
   flex: 1;
   display: flex;
@@ -164,7 +232,11 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Main content - Scrollable area */
+/* 
+ * CONTENT - SCROLLABLE AREA
+ * Inner scrollable container for actual page content
+ * No glassmorphism here - applied to parent .page instead
+ */
 #content {
   flex: 1;
   overflow-y: auto;
@@ -179,14 +251,28 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Ensure content main is transparent and has proper padding */
+/* 
+ * CONTENT MAIN - ACTUAL PAGE CONTENT
+ * The main element containing mdBook content
+ * 
+ * CONFIGURABLE:
+ * - padding: 2rem 3rem (content padding)
+ */
 #content main {
   background: transparent !important;
   background-color: transparent !important;
   padding: 2rem 3rem;
 }
 
-/* Bottom bar - Fixed height */
+/* 
+ * BOTTOM BAR - NAVIGATION FOOTER
+ * Fixed-height glassmorphic container for prev/next navigation
+ * 
+ * CONFIGURABLE:
+ * - height: 44px (bar height)
+ * - padding: 0 1rem (horizontal padding)
+ * - background: rgba(255, 255, 255, 0.05) (glass opacity)
+ */
 #bottom-bar {
   height: 44px;
   min-height: 44px;
@@ -208,7 +294,10 @@ html, body {
   padding: 0 1rem;
 }
 
-/* Responsive adjustments */
+/* 
+ * RESPONSIVE BEHAVIOR
+ * Mobile-specific adjustments for screens < 1080px
+ */
 @media (max-width: 1080px) {
   #app-wrapper {
     padding: 4px;
@@ -235,7 +324,11 @@ html, body {
   }
 }
 
-/* Sidebar resize handle */
+/* 
+ * SIDEBAR RESIZE HANDLE
+ * Interactive handle for adjusting sidebar width
+ * Stores width in CSS variable: --sidebar-width
+ */
 #sidebar-resize-handle {
   position: absolute;
   right: 0;

@@ -1,4 +1,4 @@
-/* Override mdBook theme backgrounds for all themes */
+/* \n * ============================================================================\n * MDBOOK THEME OVERRIDES\n * ============================================================================\n * \n * Critical overrides to disable mdBook's default styling that conflicts\n * with our glassmorphism design. These overrides ensure transparency\n * across all mdBook theme variations.\n * \n * WHY THIS FILE EXISTS:\n * mdBook applies opaque backgrounds through theme classes (light, rust, etc.)\n * that override our transparent glassmorphic design. This file forces\n * transparency on all elements that mdBook tries to make opaque.\n * \n * CRITICAL OVERRIDES:\n * 1. Theme-specific background removal\n * 2. Negative margin compensation\n * 3. Sticky positioning removal\n * 4. Scroll behavior fixes\n * \n * ============================================================================\n */\n\n/* \n * THEME-SPECIFIC BACKGROUND OVERRIDES\n * Forces transparency for all mdBook theme variations\n */
 
 /* Light theme overrides */
 .light #content,
@@ -204,7 +204,7 @@ html.sidebar-visible #menu-bar {
   margin-top: 0 !important;
 }
 
-/* Negative margin to pull content up - compensating for hidden spacing */
+/* \n * CRITICAL SPACING ADJUSTMENT\n * The -12px margin compensates for hidden spacing in mdBook's layout.\n * This ensures the glassmorphic border is fully visible.\n * \n * IMPORTANT: This value was determined through extensive debugging.\n * Do not modify without thorough testing!\n */
 .page {
   margin-top: -12px !important;
 }
